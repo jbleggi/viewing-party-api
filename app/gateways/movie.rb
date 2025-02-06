@@ -1,0 +1,3 @@
+class MovieGateway 
+
+end
