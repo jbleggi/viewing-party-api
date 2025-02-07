@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Movies top rated request endpoint" do
   describe "happy path" do
     it "retrieves 20 rated movies" do
-      get api_v1_movies_path
+      get "/api/v1/movies"
 
       expect(response).to be_successful
 
