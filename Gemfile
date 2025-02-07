@@ -37,6 +37,7 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 
 gem "faraday"
+gem "httparty"
 
 gem "jsonapi-serializer"
 
