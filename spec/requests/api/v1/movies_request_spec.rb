@@ -22,12 +22,23 @@ RSpec.describe "Movie endpoints" do
 
   end
 
-  describe "GET movies/search" do
-    it 
+  describe "GET #search" do
+    it "retrieves results based on search params" do 
+      search_term = "lord of the rings"
 
+      get("/api/v1/movies/search?query=#{search_term})")
+  
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+
+      expect(json).to be_a Hash
+      expect(json[:data].count).to be <= 20
+
+      json[:data].each do |movie|
+        expect(movie[:attributes]).to have_key :title
+        expect(movie[:attributes]).to have_key :vote_average
+      end
+    end
   end
-
-
-
-
 end
