@@ -1,0 +1,18 @@
+/* app/assets/stylesheets/application.css */
+
+
+h1 {
+  color: #2a3d75;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  font-size: 18px;
+}
+
+body {
+  background-color: #f0f8ff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
