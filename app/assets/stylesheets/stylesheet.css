@@ -1,0 +1,17 @@
+/* app/assets/stylesheets/application.css */
+
+/* Styling the Welcome page */
+h1 {
+  color: #4CAF50;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  font-size: 18px;
+}
+
+body {
+  background-color: #f0f8ff;
+  font-family: Arial, sans-serif;
+}
