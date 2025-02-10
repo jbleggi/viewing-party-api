@@ -98,8 +98,9 @@ class Api::V1::ViewingPartiesController < ApplicationController
   private
 
   def viewing_party_params
-    params.require(:viewing_party).permit(:name, :host_id, :start_time, :end_time, :movie_id, invitees: [])
+    params.require(:viewing_party).permit(:name, :host_id, :start_time, :end_time, :movie_id, :movie_title, invitees: [])
   end
+ 
 
   # Helper method to fetch movie runtime from TMDb API
   def get_movie_runtime(movie_id)

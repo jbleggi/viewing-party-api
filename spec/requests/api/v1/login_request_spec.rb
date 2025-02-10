@@ -7,7 +7,7 @@ describe "Sessions API", type: :request do
         User.create(name: "Me", username: "its_me", password: "reallyGoodPass")
       end
 
-      it "should return 200 and provide the appropriate data" do
+      it "should return 200 and provide the appropriate data", :vcr do
         user_params = { username: "its_me", password: "reallyGoodPass" }
 
         post api_v1_sessions_path, params: user_params, as: :json
@@ -20,7 +20,7 @@ describe "Sessions API", type: :request do
     end
 
     context "request is invalid" do
-      it "should return error for bad credentials" do
+      it "should return error for bad credentials", :vcr do
         user_params = { email: "me@turing.edu", password: "diffPass" }
 
         post api_v1_sessions_path, params: user_params, as: :json
