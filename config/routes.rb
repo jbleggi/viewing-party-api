@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  # root 'welcome#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root "api/v1/movies#index"
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :index]
