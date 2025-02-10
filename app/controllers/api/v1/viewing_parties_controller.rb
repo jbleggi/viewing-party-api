@@ -64,6 +64,7 @@ class Api::V1::ViewingPartiesController < ApplicationController
       host = User.find(@viewing_party.host_id)
       @viewing_party.users << host
 
+
       # Add the invitees to the party
       invitees = params[:viewing_party][:invitees]
       if invitees.present?

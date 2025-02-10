@@ -57,6 +57,8 @@ class Api::V1::MoviesController < ApplicationController
 
     response = conn.get("/3/movie/#{params[:id]}")
     json = JSON.parse(response.body, symbolize_names: true)
+
+    year_only = json[:release_date].slice(0, 4)
    
     genres_array = json[:genres].map { |genre| genre[:name] }
 
@@ -69,6 +71,7 @@ class Api::V1::MoviesController < ApplicationController
 
     response3 = conn.get("/3/movie/#{params[:id]}/reviews")
     json3 = JSON.parse(response3.body, symbolize_names: true)
+    
     reviews = json3[:results]
     reviews_array = reviews.first(5).map do |review| 
       { author: review[:author], review: review[:content]}
@@ -79,7 +82,7 @@ class Api::V1::MoviesController < ApplicationController
       type: 'movie',
       attributes: {
         title: json[:title],
-        release_year: json[:release_date],
+        release_year: year_only,
         vote_average: json[:vote_average],
         runtime: json[:runtime],
         genres: genres_array,
