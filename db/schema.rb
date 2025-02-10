@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_10_031818) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_10_160018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,9 +48,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_10_031818) do
     t.json "invitees"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "host_id_id", null: false
-    t.index ["host_id_id"], name: "index_viewing_parties_on_host_id_id"
+    t.bigint "host_id", null: false
+    t.index ["host_id"], name: "index_viewing_parties_on_host_id"
   end
 
-  add_foreign_key "viewing_parties", "users", column: "host_id_id"
+  add_foreign_key "viewing_parties", "users", column: "host_id"
 end
