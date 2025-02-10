@@ -1,6 +1,12 @@
 class Api::V1::ViewingPartiesController < ApplicationController
-   # POST /api/v1/viewing_parties/:id/users
-   def add_users
+  def index
+    @viewing_parties = ViewingParty.all
+    render json: @viewing_parties
+  end
+  
+  # POST /api/v1/viewing_parties/:id/users
+  
+  def add_users
     @viewing_party = ViewingParty.find_by(id: params[:id])
 
     # Check if the viewing party exists
