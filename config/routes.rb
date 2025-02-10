@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create, :index]
       resources :sessions, only: :create
-      resources :movies, only: [:index] do
+      resources :movies, only: [:index, :show] do
         collection do 
           get 'search'
         end
