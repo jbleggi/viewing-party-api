@@ -7,7 +7,7 @@ RSpec.describe ViewingParty, type: :model do
     it { should have_many(:users).through(:user_viewing_parties) }
   end
 
-  describe 'validations' do
+  describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:start_time) }
     it { should validate_presence_of(:end_time) }

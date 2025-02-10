@@ -7,11 +7,11 @@ class Api::V1::MoviesController < ApplicationController
     response = conn.get("/3/movie/top_rated?language=en-US&page=1")
 
     json = JSON.parse(response.body, symbolize_names: true)
-
+    # binding.pry
     formatted_json = {
       data: json[:results].first(20).map do |movie|
         {
-          id: movie[:id].to_s,  
+          id: movie[:id],  
           type: 'movie',
           attributes: {
             title: movie[:title],
