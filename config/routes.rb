@@ -18,6 +18,9 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
+      resources :viewing_parties, only: [:create, :show, :index] do
+        post 'users', to: 'viewing_parties#add_users'
+      end
     end
   end
 end
