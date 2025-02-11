@@ -58,7 +58,7 @@ RSpec.describe "Movie endpoints", type: :request do
 
       expect(json[:attributes][:title]).to eq("The Shawshank Redemption")
       expect(json[:attributes][:release_year]).to eq("1994")
-      expect(json[:attributes][:vote_average]).to eq(8.7)
+      expect(json[:attributes][:vote_average]).to eq(8.708)
       expect(json[:attributes][:runtime]).to eq(142)
       expect(json[:attributes][:genres]).to eq(["Drama", "Crime"])
       expect(json[:attributes][:summary]).to include("Imprisoned in the 1940s")
