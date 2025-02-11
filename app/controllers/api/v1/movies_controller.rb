@@ -1,5 +1,7 @@
 class Api::V1::MoviesController < ApplicationController
   def index
+    puts "Jillian's Viewing Party API"
+    
     conn = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
       faraday.headers["Authorization"] = "Bearer #{Rails.application.credentials.tmdb[:access_token]}"
     end
