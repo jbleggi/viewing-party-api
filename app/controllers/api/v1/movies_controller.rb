@@ -3,25 +3,34 @@ class Api::V1::MoviesController < ApplicationController
     conn = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
       faraday.headers["Authorization"] = "Bearer #{Rails.application.credentials.tmdb[:access_token]}"
     end
-
+  
     response = conn.get("/3/movie/top_rated?language=en-US&page=1")
-
-    json = JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
-    formatted_json = {
-      data: json[:results].first(20).map do |movie|
-        {
-          id: movie[:id],  
-          type: 'movie',
-          attributes: {
-            title: movie[:title],
-            vote_average: movie[:vote_average]
-          }
+  
+    # Check if the response status is successful
+    if response.status == 200
+      json = JSON.parse(response.body, symbolize_names: true)
+      
+      # Ensure 'results' is not nil and contains data
+      if json[:results].present?
+        formatted_json = {
+          data: json[:results].first(20).map do |movie|
+            {
+              id: movie[:id],  
+              type: 'movie',
+              attributes: {
+                title: movie[:title],
+                vote_average: movie[:vote_average]
+              }
+            }
+          end
         }
+        render json: formatted_json
+      else
+        render json: { error: "No movie data found" }, status: :not_found
       end
-    }
-
-    render json: formatted_json
+    else
+      render json: { error: "Failed to fetch data from TMDB" }, status: :bad_gateway
+    end
   end
 
   def search
